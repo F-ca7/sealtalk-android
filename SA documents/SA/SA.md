@@ -7,12 +7,10 @@
 ## Table of contents
 
 - [Introduction](#Introduction)
-- [Stakeholder Analysis](#Stakeholder Analysis)
+- [Stakeholder Analysis](#Stakeholder)
 - [Context View](#Context-view)
 
 ## Introduction
----------------
-
 Instant messaging is the most popular way for people to communicate on Internet,
 and various kinds of instant messaging software are emerging one after another.
 Service providers also provide more and more abundant communication services.
@@ -42,9 +40,7 @@ describing on functional view and development view. To understand SealTalk even
 further, evolution perspective, which shows the process of how SealTalk develops
 into what it is today, is also presented. At the end, we will have a conclusion.
 
-## Stakeholder Analysis
------------------------
-
+## <span name="Stakeholder">Stakeholder Analysis</span>
 To start off our analysis, we will look at the stakeholders involved with
 SealTalk. A stakeholder is an entity of a system architecture that consists of an individual
 or an organization that has importance and interest to realize a system.
@@ -122,8 +118,6 @@ will force RongCloud to optimize their products and implement more functions,
 thus providing higher services.
 
 ## Context View
----------------
-
 ### System Scope
 
 SealTalk is an open source instant messaging Android app based on the RongCloud
