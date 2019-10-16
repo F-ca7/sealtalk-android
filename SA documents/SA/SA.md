@@ -85,7 +85,7 @@ may customize SealTalk-android for their purpose.
 
 In the stakeholder analysis, many different actors with distinct roles, power
 and interest have been analyzed. The predominant stakeholder of SealTalk is
-RongCloud Inc., which has the most power and interest in this project.
+RongCloud Inc., because it's the company which it belongs to,which has the most power and interest in this project. Besides, developers of this project, two Github contributers--jenkinsrc(22commits) and rc-huangxiujun(8commits), have the highest power and interest ethier.
 
 RongCloud has already completed two rounds of financing:
 
@@ -100,22 +100,18 @@ Because these firms also invest in other various products, we can consider that
 the investment means these companies have high power but moderate interest in
 RongCloud’s product, as well as seal talk, to be specific.
 
-Since Seal Talk is built upon Java and Android Studio (based on IntelliJ IDEA),
-the programming language and the developing environment can be regarded as more
-powerful actors than other suppliers, but having little interest. The
-developers, testers, maintainers can be places in the middle of the graph, a
-little bit over the moderate grade. In addition, RongCloud has also cooperated
-with some professional technology providers, which provide additional
-development support. They can be classified as having not so much power and
-maintaining some interest.
+Since Seal Talk is built upon Java and Android Studio (based on IntelliJ IDEA), and the iOS version is built on Swift.
+The programming language and the developing environment can be regarded as more
+powerful actors than other suppliers like Github, but having little interest. They also control and manage the code and version through Github and Gradle, and there are few alternatives.
+The other developers, testers, maintainers(we may not know them) can be places in the middle of the graph, a little bit over the moderate grade.
 
-The two least powerful stakeholders are the individual users and the
-competitors, while competitors have the highest interest. Apparently, they want
+The two less powerful stakeholders are the users and the
+competitors, while competitors have the highest interest, like QQ, Wechat.These applications also offer in-time communication service. Apparently, they want
 to figure out how does the Seal Talk perform, what technologies are included and
 its advantages and shortcomings. Companies who use SealTalk are considered to
-have more power than individual users, since the cooperation among companies
-will force RongCloud to optimize their products and implement more functions,
-thus providing higher services.
+have more power than individual users,for example WPS, SEEYON, since the cooperation among companies will force RongCloud to optimize their products and implement more functions,
+thus providing higher services. 
+Individual developers using Seal Talk may be considered have least power and interest less then company users.
 
 ## Context View
 ### System Scope
