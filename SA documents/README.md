@@ -23,8 +23,12 @@ author: 方焱志
 	最终由方焱志汇总整理
 	
 3. 进度报告汇总请见 <u>progress_report.docx</u>
+
 4. SA文档(部分)请见 <u>SA.docx</u>
-5. 下一阶段目标：
+
+5. 所有图片等绘制设计的源文件请见<u>resources</u>目录
+
+6. 下一阶段目标：
    - Development View
    - Evolution Perspective
    - Technical Debt
