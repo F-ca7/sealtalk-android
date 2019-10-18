@@ -65,10 +65,12 @@ User provides feedbacks to further improve the system.
 
 
 **Suppliers**
+
 SealTalk-android is built upon Java, and deployed on Android. They use Android
 Studio as development environment.
 
 **Development & Testing**
+
 In GitHub record, most of the early commit are
 given by jenkinsrc and Jianli Zhou. They are the employees of RongCloud Inc. 
 RongCloud has assigned a group of nearly 5 people to develop SealTalk-android.
