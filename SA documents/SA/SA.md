@@ -52,6 +52,7 @@ or an organization that has importance and interest to realize a system.
 RongCloud provides real-time communication cloud services. They release
 SealTalk-android as a demo application for their cloud services. Acquirers wants to sold their
 cloud services, so they want to make it simple, and capable to demonstrate the ability of cloud server. 
+They provide cloud service as a part of SealTalk support.
 
 **User**
 
@@ -60,17 +61,16 @@ user could use it as a tool for personal communication, or to send message in a
 company. Notice that SealTalk\`s basic function are built for general usage,
 enterprise user may need to modified their part. For business user,they want SealTalk
 to be easily extended for their purpose, while user prefers it to be as easy as possible in using.
+User provides feedbacks to further improve the system.
 
-**Suppliers**
-
-SealTalk-android is built upon Java, and deployed on Android. They use Android
-Studio as development environment.
 
 **Development & Testing**
 
-In GitHub record, most of the early commit are given by jenkinsrc and Jianli
-Zhou. They are the employees of RongCloud Inc. RongCloud has assigned a group of
-nearly 5 people to develop SealTalk-android.
+SealTalk-android is built upon Java, and deployed on Android. They use Android
+Studio as development environment.In GitHub record, most of the early commit are
+given by jenkinsrc and Jianli Zhou. They are the employees of RongCloud Inc. 
+RongCloud has assigned a group of nearly 5 people to develop SealTalk-android.
+Developers implements nearly all the main function of the system.
 
 **Competitors**
 
@@ -80,8 +80,9 @@ and have a much wider user.
 **Maintainers**
 
 Commits that submit later are mainly given by rc-huangxiujun, an employee of
-RongCloud. There is not so much fork record on GitHub, but individual developers
-may customize SealTalk-android for their purpose.
+RongCloud. SealTalk is quite a young project ,there is not so much fork record on GitHub, most of the maintainer are RongCloud's worker. They are more interesting in adding extended function as well as fixing known bugs. Also, they need the system easily to understand, for 
+individual developers may customize SealTalk-android for their purpose, which enlarge the protential usage
+of SealTalk.
 
 ### Power-interest
 
