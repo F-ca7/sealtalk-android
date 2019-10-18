@@ -50,24 +50,25 @@ or an organization that has importance and interest to realize a system.
 **Acquirers**
 
 RongCloud provides real-time communication cloud services. They release
-SealTalk-android as a demo application for their cloud services. Acquirers wants to sold their
-cloud services, so they want to make it simple, and capable to demonstrate the ability of cloud server. 
-They provide cloud service as a part of SealTalk support.
+SealTalk-android as a demo application for their cloud services. They provide cloud service as a part of SealTalk support, and also assigned developers to develop and maintain the system.
+Acquirers wants to sold their cloud services, so they want to make it simple, 
+and capable to demonstrate the ability of cloud server. 
+
 
 **User**
 
 As a real-time communication software, SealTalk has a very broad user base. The
 user could use it as a tool for personal communication, or to send message in a
-company. Notice that SealTalk\`s basic function are built for general usage,
-enterprise user may need to modified their part. For business user,they want SealTalk
+company. Notice that SealTalk's basic function are built for general usage,
+enterprise user may need to modified their part. User provides feedbacks to further 
+improve the system.For business user,they want SealTalk
 to be easily extended for their purpose, while user prefers it to be as easy as possible in using.
-User provides feedbacks to further improve the system.
 
 
 **Suppliers**
 
 SealTalk-android is built upon Java, and deployed on Android. They use Android
-Studio as development environment.
+Studio as development environment. Suppliers provide basic framework and runtime environment for sealtalk.
 
 **Development & Testing**
 
@@ -84,9 +85,7 @@ and have a much wider user.
 **Maintainers**
 
 Commits that submit later are mainly given by rc-huangxiujun, an employee of
-RongCloud. SealTalk is quite a young project ,there is not so much fork record on GitHub, most of the maintainer are RongCloud's worker. They are more interesting in adding extended function as well as fixing known bugs. Also, they need the system easily to understand, for 
-individual developers may customize SealTalk-android for their purpose, which enlarge the protential usage
-of SealTalk.
+RongCloud. SealTalk is quite a young project ,there is not so much fork record on GitHub, most of the maintainer are RongCloud's worker. They add extended functions as well as fixing known bugs to sealtalk.They need the system easy to understand, but they will mostly holding the company's interest.Individual developers may customize SealTalk-android for their own purpose and own interests.
 
 ### Power-interest
 
