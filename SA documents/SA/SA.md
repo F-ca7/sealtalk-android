@@ -50,14 +50,16 @@ or an organization that has importance and interest to realize a system.
 **Acquirers**
 
 RongCloud provides real-time communication cloud services. They release
-SealTalk-android as a demo application for their cloud services.
+SealTalk-android as a demo application for their cloud services. Acquirers wants to sold their
+cloud services, so they want to make it simple, and capable to demonstrate the ability of cloud server. 
 
 **User**
 
 As a real-time communication software, SealTalk has a very broad user base. The
 user could use it as a tool for personal communication, or to send message in a
 company. Notice that SealTalk\`s basic function are built for general usage,
-enterprise user may need to modified their part.
+enterprise user may need to modified their part. For business user,they want SealTalk
+to be easily extended for their purpose, while user prefers it to be as easy as possible in using.
 
 **Suppliers**
 
