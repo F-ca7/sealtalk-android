@@ -54,7 +54,7 @@ SealTalk-android as a demo application for their cloud services. They provide cl
 Acquirers wants to sold their cloud services, so they want to make it simple, 
 and capable to demonstrate the ability of cloud server. 
 
-The development viewpoint for Acquirers is *Cost to build, Testability* and *Avaliability*  
+The property that Acquirers concerned is *Cost to build, Testability* and *Avaliability*  
 
 **User**
 
@@ -65,7 +65,7 @@ enterprise user may need to modified their part. User provides feedbacks to furt
 improve the system.For business user,they want SealTalk
 to be easily extended for their purpose, while user prefers it to be as easy as possible in using.
 
-The development viewpoint for User is *usablity, security* and *performance* .
+The property that User concerned is *usablity, security* and *performance* .
 
 
 **Suppliers**
@@ -140,3 +140,6 @@ with.
 ![](https://s2.ax1x.com/2019/10/14/KS0EjS.png)
 
 *Figure 1: External Entities*
+
+
+## Developement View
