@@ -50,25 +50,37 @@ or an organization that has importance and interest to realize a system.
 **Acquirers**
 
 RongCloud provides real-time communication cloud services. They release
-SealTalk-android as a demo application for their cloud services.
+SealTalk-android as a demo application for their cloud services. They provide cloud service as a part of SealTalk support, and also assigned developers to develop and maintain the system.
+Acquirers wants to sold their cloud services, so they want to make it simple, 
+and capable to demonstrate the ability of cloud server. 
+
+The property that Acquirers concerned is *cost to build, testability* and *usability*  
 
 **User**
 
 As a real-time communication software, SealTalk has a very broad user base. The
 user could use it as a tool for personal communication, or to send message in a
-company. Notice that SealTalk\`s basic function are built for general usage,
-enterprise user may need to modified their part.
+company. Notice that SealTalk's basic function are built for general usage,
+enterprise user may need to modified their part. User provides feedbacks to further 
+improve the system.For business user,they want SealTalk
+to be easily extended for their purpose, while user prefers it to be as easy as possible in using.
+
+The property that User concerned is *availiability, security* and *performance* .
+
 
 **Suppliers**
 
 SealTalk-android is built upon Java, and deployed on Android. They use Android
-Studio as development environment.
+Studio as development environment. Suppliers provide basic framework and runtime environment for sealtalk.
 
 **Development & Testing**
 
-In GitHub record, most of the early commit are given by jenkinsrc and Jianli
-Zhou. They are the employees of RongCloud Inc. RongCloud has assigned a group of
-nearly 5 people to develop SealTalk-android.
+In GitHub record, most of the early commit are
+given by jenkinsrc and Jianli Zhou. They are the employees of RongCloud Inc. 
+RongCloud has assigned a group of nearly 5 people to develop SealTalk-android.
+Developers implements nearly all the main function of the system.
+
+Developers will focus on *availability, scalability* and *cost to build*
 
 **Competitors**
 
@@ -78,10 +90,15 @@ and have a much wider user.
 **Maintainers**
 
 Commits that submit later are mainly given by rc-huangxiujun, an employee of
-RongCloud. There is not so much fork record on GitHub, but individual developers
-may customize SealTalk-android for their purpose.
+RongCloud. SealTalk is quite a young project ,there is not so much fork record on GitHub, most of the maintainer are RongCloud's worker. They add extended functions as well as fixing known bugs to sealtalk.They need the system easy to understand, but they will mostly holding the company's interest.Individual developers may customize SealTalk-android for their own purpose and own interests.
+
+Maintainers will mainly focus on *Modifiability, Testability* and *Scalability*.
 
 ### Power-interest
+
+![](https://s2.ax1x.com/2019/10/23/KYV6wn.jpg)
+
+*Figure 1: Power-Interest Grid*
 
 In the stakeholder analysis, many different actors with distinct roles, power
 and interest have been analyzed. The predominant stakeholder of SealTalk is
@@ -106,9 +123,7 @@ powerful actors than other suppliers like Github, but having little interest. Th
 The other developers, testers, maintainers(we may not know them) can be places in the middle of the graph, a little bit over the moderate grade.
 
 The two less powerful stakeholders are the users and the
-competitors, while competitors have the highest interest, like QQ, Wechat.These applications also offer in-time communication service. Apparently, they want
-to figure out how does the Seal Talk perform, what technologies are included and
-its advantages and shortcomings. Companies who use SealTalk are considered to
+competitors, while competitors have the highest interest, like QQ, Wechat.These applications also offer in-time communication service. Apparently, they want to figure out how does the Seal Talk perform, what technologies are included and its advantages and shortcomings. Companies who use SealTalk are considered to
 have more power than individual users,for example WPS, SEEYON, since the cooperation among companies will force RongCloud to optimize their products and implement more functions,
 thus providing higher services. 
 Individual developers using Seal Talk may be considered have least power and interest less then company users.
@@ -130,4 +145,4 @@ with.
 
 ![](https://s2.ax1x.com/2019/10/14/KS0EjS.png)
 
-*Figure 1: External Entities*
+*Figure 2: External Entities*
