@@ -9,12 +9,13 @@
 - [Introduction](#Introduction)
 - [Stakeholder Analysis](#Stakeholder)
 - [Context View](#Context-view)
+- [Development View](#Development-View) 
 
 ## Introduction
 Instant messaging is the most popular way for people to communicate on Internet,
 and various kinds of instant messaging software are emerging one after another.
 Service providers also provide more and more abundant communication services.
-SealTalk is an open source instant messaging App based on the Rongyun Instant
+SealTalk is an open source instant messaging App based on the RongCloud Instant
 Messaging SDK (IMKIt).
 
 It aims to provide developers with IM development needs with reference
@@ -62,16 +63,15 @@ As a real-time communication software, SealTalk has a very broad user base. The
 user could use it as a tool for personal communication, or to send message in a
 company. Notice that SealTalk's basic function are built for general usage,
 enterprise user may need to modified their part. User provides feedbacks to further 
-improve the system.For business user,they want SealTalk
+improve the system. For business user,they want SealTalk
 to be easily extended for their purpose, while user prefers it to be as easy as possible in using.
 
-The property that User concerned is *availiability, security* and *performance* .
-
+The property that User concerned is *Reliability, Usability, Portability* and *Performance* .
 
 **Suppliers**
 
 SealTalk-android is built upon Java, and deployed on Android. They use Android
-Studio as development environment. Suppliers provide basic framework and runtime environment for sealtalk.
+Studio as development environment. Suppliers provide basic framework and runtime environment for SealTalk.
 
 **Development & Testing**
 
@@ -80,7 +80,7 @@ given by jenkinsrc and Jianli Zhou. They are the employees of RongCloud Inc.
 RongCloud has assigned a group of nearly 5 people to develop SealTalk-android.
 Developers implements nearly all the main function of the system.
 
-Developers will focus on *availability, scalability* and *cost to build*
+Developers will focus on *Functional Correctness, Functional Completeness*.
 
 **Competitors**
 
@@ -90,19 +90,23 @@ and have a much wider user.
 **Maintainers**
 
 Commits that submit later are mainly given by rc-huangxiujun, an employee of
-RongCloud. SealTalk is quite a young project ,there is not so much fork record on GitHub, most of the maintainer are RongCloud's worker. They add extended functions as well as fixing known bugs to sealtalk.They need the system easy to understand, but they will mostly holding the company's interest.Individual developers may customize SealTalk-android for their own purpose and own interests.
+RongCloud. SealTalk is quite a young project ,there is not so much fork record on GitHub, most of the maintainer are RongCloud's worker. They add extended functions as well as fixing known bugs to SealTalk. They need the system easy to understand, but they will mostly holding the company's interest. Individual developers may customize SealTalk-android for their own purpose and own interests.
 
-Maintainers will mainly focus on *Modifiability, Testability* and *Scalability*.
+Maintainers will mainly focus on *Maintainability, Modifiability* and *Testability*.
+
+![](https://s2.ax1x.com/2019/10/26/KDJ6bD.png)
+
+Figure 1: Quality Requirements that Stakeholders are Concerned with
 
 ### Power-interest
 
 ![](https://s2.ax1x.com/2019/10/23/KYV6wn.jpg)
 
-*Figure 1: Power-Interest Grid*
+*Figure 2: Power-Interest Grid*
 
 In the stakeholder analysis, many different actors with distinct roles, power
 and interest have been analyzed. The predominant stakeholder of SealTalk is
-RongCloud Inc., because it's the company which it belongs to,which has the most power and interest in this project. Besides, developers of this project, two Github contributers--jenkinsrc(22commits) and rc-huangxiujun(8commits), have the highest power and interest ethier.
+RongCloud Inc., because it's the company which it belongs to,which has the most power and interest in this project. Besides, developers of this project, two Github contributors -- jenkinsrc(22commits) and rc-huangxiujun(8commits), have the highest power and interest eithier.
 
 RongCloud has already completed two rounds of financing:
 
@@ -123,9 +127,7 @@ powerful actors than other suppliers like Github, but having little interest. Th
 The other developers, testers, maintainers(we may not know them) can be places in the middle of the graph, a little bit over the moderate grade.
 
 The two less powerful stakeholders are the users and the
-competitors, while competitors have the highest interest, like QQ, Wechat.These applications also offer in-time communication service. Apparently, they want to figure out how does the Seal Talk perform, what technologies are included and its advantages and shortcomings. Companies who use SealTalk are considered to
-have more power than individual users,for example WPS, SEEYON, since the cooperation among companies will force RongCloud to optimize their products and implement more functions,
-thus providing higher services. 
+competitors, while competitors have the highest interest, like QQ, Wechat.These applications also offer in-time communication service. Apparently, they want to figure out how does the Seal Talk perform, what technologies are included and its advantages and shortcomings. Companies who use SealTalk are considered to have more power than individual users,for example WPS, SEEYON, since the cooperation among companies will force RongCloud to optimize their products and implement more functions, thus providing higher services. 
 Individual developers using Seal Talk may be considered have least power and interest less then company users.
 
 ## Context View
@@ -145,4 +147,68 @@ with.
 
 ![](https://s2.ax1x.com/2019/10/14/KS0EjS.png)
 
-*Figure 2: External Entities*
+*Figure 3: External Entities*
+
+As we can see,  SealTalk runs on multiple platforms. In fact, versions of different platforms are implemented in different languages. For instance, the Android version is implemented in Java, and the IOS version is implemented in Swift, while the server end is implemented in Node.js. 
+
+## Development View
+
+A development view describes the architecture that supports the software development process. 
+
+### Folder Structure
+
+A description of the top-level folders of the SealTalk-android repository is shown in Table 1 below.
+
+| Folder         | Description                                     |
+| -------------- | ----------------------------------------------- |
+| contactcard    | an encapsulation of contact card module         |
+| gradle         | managing the library dependencies               |
+| pushpermission | check push permissions of Android               |
+| recognizer     | third party dependencies for speech recognition |
+| script         | scripts for building, releasing, etc.           |
+| SealTalk       | source code of the Android application          |
+
+*Table 1: description of the top-level folders in SealTalk-android*
+
+Since the source code of the app is in the SealTalk directory, we now take a look inside to figure out its detailed structure from the package perspective, which is shown in Table 2.
+
+| Package Name | Function                                                     |
+| ------------ | ------------------------------------------------------------ |
+| common       | encapsulate urls, error codes and other constants            |
+| contact      | phone contacts management                                    |
+| db           | database management, using the **Room**  framework           |
+| im           | instant messaging implementation                             |
+| model        | data layer, providing various data services for the upper layer |
+| net          | network request operations, using the **Retrofit** framework |
+| qrcode       | operations for qrcode scanning and recognizing               |
+| sp           | managing cache in the application                            |
+| utils        | utils for file, network, image, logging, etc.                |
+| ota          | online updating tools                                        |
+| viewmodel    | bridging View and Model, data returned via LiveData          |
+| sms          | short message service                                        |
+| task         | different tasks are encapsulated according to different interfaces or data attributes |
+| ui           | view layer, responsible for drawing UI elements and interactions with users |
+
+*Table 2: description of the packages in SealTalk*
+
+### Module Structure
+
+A module structure model shows the organisation of the source files into modules that contain related code. Such a structure provides an overview of the source code which guides developers to understand and navigate the codebase.
+
+### MVVM
+
+SealTalk-android actually adopted an **MVVM**(Model-View-ViewModel) architecture, which is shown in Figure 4. The most obvious difference between MVVM architecture and traditional MVC architecture is that MVVM adopts data binding, that is, view changes are automatically reflected in ViewModel. 
+
+<img src="https://s2.ax1x.com/2019/10/26/KDDofU.png" style="zoom:50%;" />
+
+**Figure 4: MVVM architecture**
+
+MVC allows changing the response mode of the view to the user's input without changing the view. The user's operation on the view is handed over to the controller for processing. In response to the view event in the controller, the model interface is called to operate the data. Once the model changes, the relevant view is notified to update. However, in MVVM, the UI is driven by data. Once the data changes, the corresponding UI will be refreshed accordingly. If the UI changes, the corresponding data will also be changed. In this way, we can only care about the data flow in business processing without dealing with the page directly. This greatly achieves the understanding coupling through the **separation of duties**, so as to meet the **modifiability** in quality requirements.
+
+The specific implementation of MMVM is shown in the Figure 5. As a view layer, Activity is responsible for interface display and event interaction. Userinfoviewmodel is a ViewModel layer. It connects view and model, and data is returned through LiveData. ViewModel can obtain different data  sources by calling different tasks.
+
+The task layer is the repository layer. It shields the data source and internal implementation details from the upper layer. The upper layer don't need to know the source, just get the data and process them. In this way, the function of  modules is clear and highly reusable. All data requests only need to be written once, so as to achieve the **modularity** and **reusability** of **maintainability** in quality requirements.
+
+![](https://s2.ax1x.com/2019/10/26/KD7Dzj.png)
+
+Figure 5: MVVM Implementation in SealTalk
