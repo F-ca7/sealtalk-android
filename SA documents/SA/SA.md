@@ -10,6 +10,8 @@
 - [Stakeholder Analysis](#Stakeholder)
 - [Context View](#Context-view)
 - [Development View](#Development-View) 
+- [Evolutionary Perspective](#Evolutionary-Perspective)
+- [Technical Debt](Technical-Debt)
 
 ## Introduction
 Instant messaging is the most popular way for people to communicate on Internet,
@@ -212,3 +214,87 @@ The task layer is the repository layer. It shields the data source and internal 
 ![](https://s2.ax1x.com/2019/10/26/KD7Dzj.png)
 
 Figure 5: MVVM Implementation in SealTalk
+
+## Evolutionary Perspective
+
+The evolutionary perspective deals with concerns related to evolution during the lifetime of a system. Sealtalk has changed a lot since its initial release, so it is necessary to learn the evolution perspective of it. In the following of this section, the evolution of Sealtalk will be shown in detail.
+
+By investigating the changelog of the product, we can see all notable changes from the first release to now. The specific time when the first version Sealtalk 1.0.0 was released has not been found. We speculate that it was released in 2016 because the first changelog was updated in July 2016. Sealtalk 1.0.0 already has the basic functions of instant messaging software. All of the following updates are based on the original version, optimizing, modifying and adding some new functions. Sealtalk 1.1.0 was the first version documented in the changelog. In this version, group function and message recall function were added. People could set up a group to chat with multiple people at the same time. Also the structure of code was improved in this version. Sealtalk 1.1.1-1.1.4 had done a lot of function optimization and repair work. And then in Sealtalk 1.1.5 which was released at the end of 2016, the function of sending red packets was added. In 2017 and 2018, Sealtalk has experienced dozens of releases, but the changes are very small. In addition to continuous optimization of the interface and existing functions, only a few small functions have been added, such as business card added in April 2017, dynamic expression added in September 2018 and local video sending added in November 2018. Sealtalk 1.3.11 released in February 2019 was a more meaningful version. From this version, sealtalk supported the use of international mobile number to register accounts. And people can switch Sealtalk in the UI interface. This means that Sealtalk has begun to move towards internationalization. People from different countries could use it to communicate with each other. Since Sealtalk 1.3.14, the audio and video engine referenced by calllib module has been replaced with RTC 3.0, which is not interoperable with the previous version. In May 2019, Sealtalk experienced a relatively large update, Sealtalk 2.0.0 came out. The new version adds three functions: identification QR code, sending group announcement and message forwarding. The latest release is Sealtalk 2.2.1. At present, it has many functions that it didn't have when it was first released and many of the original functions have been optimized. But it still has a lot to improve. In the future, many new versions will be released to improve it step by step.
+
+Since SealTalk is an open source instant messaging App based on the Rongyun Instant Messaging SDK. The update of sealtalk is closely connected with the update of the version of rongyun SDK. From 2016 to now, the version of SDK has also been updated dozens of times. The latest release updates the SDK to 2.10.0.
+
+![](https://s2.ax1x.com/2019/10/30/K4KVJO.png)
+
+*Figure 6: The Evolution of SealTalk*
+
+## Technical Debt
+
+Technical debt is a concept in programming that reflects the extra development work that arises when code that is easy to implement in the short run is used instead of applying the best overall solution. 
+
+> According to Ward Cunningham, who coined the "technical debt", it is used to describe the obligation that a software organization incurs when it chooses a design or construction approach that's expedient in the short term but that increases complexity and is more costly in the long term.
+
+In the next few parts,  the debt will be analyzed in various aspects by comparing different versions of seal-talk, including architectural debt, code debt, testing debt, documentation debt. Three released version will be chosen  for comparative analysis, the latest version(SealTalk _2.1.0), last stable version(SealTalk _1.3.21), the first version(2.9.9_dev).
+
+### Architectural Debt
+
+Since the SealTalk _1.3.14, the audio and video engine referenced by the CallLib module has been replaced with RTC 3.0, which is not compatible with previous versions. And in the version 2.0+, SealTalk reconstructs the internal logic implementation to make the overall code cleaner and easier to read. Based on MVVM pattern, LiveData + ViewModel + Retrofit 2.0 + Room and other frameworks were used for development. 
+
+> Because DataBinding was difficult to debug, and had to be written in XML, the decision was made to deactivate DataBinding. 
+
+These are the two biggest progress in the project, each version is incompatible with the old version, which makes the old version directly obsolete and not maintained. As shown in the Github, all issues about the old versions are closed and the only suggestion is to try the latest version, which may make some developers annoyed. Even SealTalk 2.0 hasn't completely solve the Android X compatibility problem. 
+
+After looking in to the project structure in the previous version and the latest one. It's obvious that the file organization structure is becoming terser, and large part of codes split into small ones.  For instance, `Friend.java` and `FriendDao.java`(which are relative to manipulating database), are divided into `FriendBlackInfo.java`, `FriendDescription.java`, `FriendInfo.java`, `FriendShipInfo.java`, and `FriendStatus.java` in 2.1. Therefore, the overall code becomes easier to maintain while more functions are implemented. Other progresses are achieved like sources are merged into one package, redundant libs are removed and so on. It is clear that they are paying down their debts.
+
+### Code Debt
+
+Android-studio offers code inspection function. After running it on the master branch, the result is:
+
+| Type     | Errors | Warnings   | Description                                                  |
+| -------- | :----- | :--------- | ------------------------------------------------------------ |
+| Android  | 46     | 927        | Accessibility, Compliance, Correctness, Security, Usability... |
+| General  | 6      | -          | Annotator & Syntax error                                     |
+| HTML     | -      | 4          | Unknown HTML tag                                             |
+| Java     | 7      | 4403       | Code style, Declaration redundancy, Javadoc issues...        |
+| RegExp   | -      | 1          | Redundant character escape                                   |
+| Spelling | -      | 7762 typos | Typo                                                         |
+| XML      | -      | 24         | Unused XML schema declaration, empty body                    |
+
+
+
+The issues in Java part is extremely serious, with 1917 warnings of declaration redundancy, including 36 empty method :
+
+```java
+AddFriendActivity()
+SearchFriendActivity()
+SwitchButton()
+ThreadManager()
+...
+```
+
+(maybe haven't been implemented yet), unused return value, unused declaration, less strict access modifiers, and loss of final modifier. And the SealTalk seems not to follow the regulations of Javadoc. There are 7 errors and 1063 warnings found in javadoc part.
+
+This inspection points out the following javadoc comment flaws:  
+
+- *no javadoc where it is required*
+- *required tag is missing* 
+- *invalid or incomplete tag*
+- *javadoc description is missing or incomplete*
+
+On the other hand, another way of identifying code debt is  searching for "TODO" and "FIXME" comments in the codebase. In the latest version 2.1.0, there are **19 TODO** and **2 FIXME** items in 16 Files. They are either written in Chinese or English. It seems that some of them were proposed by previous developer and haven't finished yet, being stuck for a long time.
+
+### Testing Debt
+
+Testing code coverage of SealTalk is had to do, because it's an Android-studio project and the developers do  not write some unit test. Even running the demo, the service address where you deploy SealTalk need to be provided to replace the defalut value in source code, as well as RongCloud AppKey. 
+
+At present, we intend to abandon the assessment of this part of technical debt
+
+### Documentation Debt
+
+Developers need to write documentation of their source code, which may be of help for other developers to understand their code. More importantly, when they would not work anymore for a project, people coming after and new contributors should also be able to understand the system and its setup. In addition, documentation for the end user of the product is needed in order to understand how to download, install and use the product. 
+
+SealTalk 2.0+ gives the detailed architecture diagram to help the developers and users understand the structure easily, while they just gave a simple UML diagram in previous version. 
+
+Besides, on the Github page of SealTalk, there is a link to [SealTalk Server](https://github.com/sealtalk/sealtalk-server). This project is a back-end service for SealTalk series of applications, providing user, friend, group, blacklist related interfaces and data management services. In the project home directory, Readme file gives detailed installation and usage guide. Until now, few issues have been opened about this aspect, and quite part of them are just related to Android X compatibility problems([#20](https://github.com/sealtalk/sealtalk-android/issues/20), [#35](https://github.com/sealtalk/sealtalk-android/issues/35)), which have been already solved or due to using the old version SealTalk.
+
+From these perspectives, SealTalk seems to be out of debt in the documentation section. They provide a complete set of documentation and flowcharts for the user to understand. This includes how to deploy the front and back end, API list documentation, SDK integration instructions and so on.
+
