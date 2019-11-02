@@ -99,7 +99,7 @@ Maintainers will mainly focus on *Maintainability, Modifiability* and *Testabili
 
 ![](https://s2.ax1x.com/2019/10/26/KDJ6bD.png)
 
-Figure 1: Quality Requirements that Stakeholders are Concerned with
+*Figure 1: Quality Requirements that Stakeholders are Concerned with*
 
 ### Power-interest
 
@@ -297,7 +297,7 @@ Android-studio offers code inspection function. After running it on the master b
 | Spelling | -      | 7762 typos | Typo                                                         |
 | XML      | -      | 24         | Unused XML schema declaration, empty body                    |
 
-
+*table 3: Code Inspection*
 
 The issues in Java part is extremely serious, with 1917 warnings of declaration redundancy, including 36 empty method :
 
