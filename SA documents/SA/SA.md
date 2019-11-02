@@ -10,6 +10,7 @@
 - [Stakeholder Analysis](#Stakeholder)
 - [Context View](#Context-view)
 - [Development View](#Development-View) 
+- [Usability Perspective](#Usability-Perspective) 
 - [Evolutionary Perspective](#Evolutionary-Perspective)
 - [Technical Debt](Technical-Debt)
 
@@ -195,7 +196,7 @@ Since the source code of the app is in the SealTalk directory, we now take a loo
 
 ### Module Structure
 
-A module structure model shows the organisation of the source files into modules that contain related code. Such a structure provides an overview of the source code which guides developers to understand and navigate the codebase.
+A module structure model shows the organization of the source files into modules that contain related code. Such a structure provides an overview of the source code which guides developers to understand and navigate the codebase.
 
 ### MVVM
 
@@ -203,7 +204,7 @@ SealTalk-android actually adopted an **MVVM**(Model-View-ViewModel) architecture
 
 <img src="https://s2.ax1x.com/2019/10/26/KDDofU.png" style="zoom:50%;" />
 
-**Figure 4: MVVM architecture**
+*Figure 4: MVVM architecture*
 
 MVC allows changing the response mode of the view to the user's input without changing the view. The user's operation on the view is handed over to the controller for processing. In response to the view event in the controller, the model interface is called to operate the data. Once the model changes, the relevant view is notified to update. However, in MVVM, the UI is driven by data. Once the data changes, the corresponding UI will be refreshed accordingly. If the UI changes, the corresponding data will also be changed. In this way, we can only care about the data flow in business processing without dealing with the page directly. This greatly achieves the understanding coupling through the **separation of duties**, so as to meet the **modifiability** in quality requirements.
 
@@ -215,17 +216,54 @@ The task layer is the repository layer. It shields the data source and internal 
 
 Figure 5: MVVM Implementation in SealTalk
 
+## Usability Perspective
+
+Usability is a term that too abstract to be studied directly. Here we further divided it into three parts by following FCM model.
+
+### Operability
+
+For user, the chat view is designed as simple as possible, no redundant buttons or panels for end users. In main Activity(see figure 6), Group session and Friend session is placed on the center of the screen, with some helpful items on the top. For developer, the code is well-organized with sufficient folder, helping developer to review or customize the compartment he wants easily.
+
+
+![](https://s2.ax1x.com/2019/11/02/Kqofit.jpg)
+
+*Figure 6: SealTalk Main Activity*
+
+### Trainning
+
+Sealtalk's UI is very similar to its competitor, like WeChat or QQ, which may due to the acquirer's concern to reduce the cost to build, especially the cost to redesign the UI. It is likely that user can switch to Sealtalk from WeChat without training cost. It is easy to found that the design(see figures 8 9 10) is largely influenced by WeChat. SealTalk have packed all the code and sored by their utility, and leave Chinese notes for developers to quickly get started with Rongcloud's cloud service.(see figure 7)
+
+<img src="https://s2.ax1x.com/2019/11/02/Kqo4Rf.jpg" style="zoom:67%;" />
+
+*Figure 7: Sealtalk's note for developers*
+
+### Understandability
+
+For User, the UI is simple to discover. SealTalk have reused all the icon from QQ, thus it is accomplishing understandability with the minimum cost.(see figures 8 9 10)
+
+<img src="https://s2.ax1x.com/2019/11/02/Kqo5z8.jpg" style="zoom: 50%;" />
+
+*Figure 8: SealTalk add new friend Activity*
+
+<img src="https://s2.ax1x.com/2019/11/02/KqoRII.jpg" style="zoom:67%;" />
+
+*Figure 9: SealTalk group chat Activity*
+
+<img src="https://s2.ax1x.com/2019/11/02/KqohJP.jpg" style="zoom:67%;" />
+
+*Figure 10: SealTalk friend Activity*
+
 ## Evolutionary Perspective
 
-The evolutionary perspective deals with concerns related to evolution during the lifetime of a system. Sealtalk has changed a lot since its initial release, so it is necessary to learn the evolution perspective of it. In the following of this section, the evolution of Sealtalk will be shown in detail.
+The evolutionary perspective deals with concerns related to evolution during the lifetime of a system. SealTalk has changed a lot since its initial release, so it is necessary to learn the evolution perspective of it. In the following of this section, the evolution of SealTalk will be shown in detail.
 
-By investigating the changelog of the product, we can see all notable changes from the first release to now. The specific time when the first version Sealtalk 1.0.0 was released has not been found. We speculate that it was released in 2016 because the first changelog was updated in July 2016. Sealtalk 1.0.0 already has the basic functions of instant messaging software. All of the following updates are based on the original version, optimizing, modifying and adding some new functions. Sealtalk 1.1.0 was the first version documented in the changelog. In this version, group function and message recall function were added. People could set up a group to chat with multiple people at the same time. Also the structure of code was improved in this version. Sealtalk 1.1.1-1.1.4 had done a lot of function optimization and repair work. And then in Sealtalk 1.1.5 which was released at the end of 2016, the function of sending red packets was added. In 2017 and 2018, Sealtalk has experienced dozens of releases, but the changes are very small. In addition to continuous optimization of the interface and existing functions, only a few small functions have been added, such as business card added in April 2017, dynamic expression added in September 2018 and local video sending added in November 2018. Sealtalk 1.3.11 released in February 2019 was a more meaningful version. From this version, sealtalk supported the use of international mobile number to register accounts. And people can switch Sealtalk in the UI interface. This means that Sealtalk has begun to move towards internationalization. People from different countries could use it to communicate with each other. Since Sealtalk 1.3.14, the audio and video engine referenced by calllib module has been replaced with RTC 3.0, which is not interoperable with the previous version. In May 2019, Sealtalk experienced a relatively large update, Sealtalk 2.0.0 came out. The new version adds three functions: identification QR code, sending group announcement and message forwarding. The latest release is Sealtalk 2.2.1. At present, it has many functions that it didn't have when it was first released and many of the original functions have been optimized. But it still has a lot to improve. In the future, many new versions will be released to improve it step by step.
+By investigating the changelog of the product, we can see all notable changes from the first release to now. The specific time when the first version SealTalk 1.0.0 was released has not been found. We speculate that it was released in 2016 because the first changelog was updated in July 2016. SealTalk 1.0.0 already has the basic functions of instant messaging software. All of the following updates are based on the original version, optimizing, modifying and adding some new functions. SealTalk 1.1.0 was the first version documented in the changelog. In this version, group function and message recall function were added. People could set up a group to chat with multiple people at the same time. Also the structure of code was improved in this version. SealTalk 1.1.1-1.1.4 had done a lot of function optimization and repair work. And then in SealTalk 1.1.5 which was released at the end of 2016, the function of sending red packets was added. In 2017 and 2018, SealTalk has experienced dozens of releases, but the changes are very small. In addition to continuous optimization of the interface and existing functions, only a few small functions have been added, such as business card added in April 2017, dynamic expression added in September 2018 and local video sending added in November 2018. SealTalk 1.3.11 released in February 2019 was a more meaningful version. From this version, SealTalk supported the use of international mobile number to register accounts. And people can switch SealTalk in the UI interface. This means that SealTalk has begun to move towards internationalization. People from different countries could use it to communicate with each other. Since SealTalk 1.3.14, the audio and video engine referenced by calllib module has been replaced with RTC 3.0, which is not interoperable with the previous version. In May 2019, SealTalk experienced a relatively large update, SealTalk 2.0.0 came out. The new version adds three functions: identification QR code, sending group announcement and message forwarding. The latest release is SealTalk 2.2.1. At present, it has many functions that it didn't have when it was first released and many of the original functions have been optimized. But it still has a lot to improve. In the future, many new versions will be released to improve it step by step.
 
-Since SealTalk is an open source instant messaging App based on the Rongyun Instant Messaging SDK. The update of sealtalk is closely connected with the update of the version of rongyun SDK. From 2016 to now, the version of SDK has also been updated dozens of times. The latest release updates the SDK to 2.10.0.
+Since SealTalk is an open source instant messaging App based on the Rongyun Instant Messaging SDK. The update of SealTalk is closely connected with the update of the version of Rongyun SDK. From 2016 to now, the version of SDK has also been updated dozens of times. The latest release updates the SDK to 2.10.0.
 
 ![](https://s2.ax1x.com/2019/10/30/K4KVJO.png)
 
-*Figure 6: The Evolution of SealTalk*
+*Figure 11: The Evolution of SealTalk*
 
 ## Technical Debt
 
