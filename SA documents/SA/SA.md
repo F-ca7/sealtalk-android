@@ -214,7 +214,7 @@ The task layer is the repository layer. It shields the data source and internal 
 
 ![](https://s2.ax1x.com/2019/10/26/KD7Dzj.png)
 
-Figure 5: MVVM Implementation in SealTalk
+*Figure 5: MVVM Implementation in SealTalk*
 
 ## Usability Perspective
 
@@ -229,7 +229,7 @@ For user, the chat view is designed as simple as possible, no redundant buttons 
 
 *Figure 6: SealTalk Main Activity*
 
-### Trainning
+### Training
 
 Sealtalk's UI is very similar to its competitor, like WeChat or QQ, which may due to the acquirer's concern to reduce the cost to build, especially the cost to redesign the UI. It is likely that user can switch to Sealtalk from WeChat without training cost. It is easy to found that the design(see figures 8 9 10) is largely influenced by WeChat. SealTalk have packed all the code and sored by their utility, and leave Chinese notes for developers to quickly get started with Rongcloud's cloud service.(see figure 7)
 
