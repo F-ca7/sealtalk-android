@@ -4,15 +4,25 @@
 
 *Wuhan University*
 
+## Abstract
+
+SealTalk is an open source instant messaging App based on the RongCloud Instant
+Messaging SDK (IMKIt). It meets the social communication needs, providing single group chat, super group and other chat modes, support picture, voice and small video, real-time message push, highly customized interface, high-definition audio and video call, effectively improve user stickiness and activeness. It aims to provide developers with IM development needs with reference
+development practices, thereby reducing the time from development to online application, and devoting more energy to the application's own business implementation.
+
 ## Table of contents
 
 - [Introduction](#Introduction)
 - [Stakeholder Analysis](#Stakeholder)
 - [Context View](#Context-view)
 - [Development View](#Development-View) 
+- [Functional View](#Functional View)
 - [Usability Perspective](#Usability-Perspective) 
+- [Tactics](#Tactics) 
 - [Evolutionary Perspective](#Evolutionary-Perspective)
-- [Technical Debt](Technical-Debt)
+- [Technical Debt](#Technical-Debt)
+- [Conclusion](#Conclusion)
+- [References](#References)
 
 ## Introduction
 Instant messaging is the most popular way for people to communicate on Internet,
@@ -21,12 +31,9 @@ Service providers also provide more and more abundant communication services.
 SealTalk is an open source instant messaging App based on the RongCloud Instant
 Messaging SDK (IMKIt).
 
-It aims to provide developers with IM development needs with reference
-development practices, thereby reducing the time from development to online
-application, and devoting more energy to the application's own business
-implementation. IMKit includes two UIs: session list and session page. SealTalk
+IMKit includes two UIs: session list and session page. SealTalk
 adds login UI, contact UI, discovery UI and "I" UI to provide a complete set of
-instant messaging App DEMO instances.
+instant messaging App demo instances. It has five advanced functions: server real-time message routing, single group chat message cloud storage, online status subscription, broadcast message and push, multi device message synchronization[1], which greatly improve the IM capability and user experience.
 
 SealTalk contains session scenarios including single chat, group chat, chat
 room, discussion group and so on. Conversations between users can be
@@ -173,7 +180,7 @@ A description of the top-level folders of the SealTalk-android repository is sho
 
 *Table 1: description of the top-level folders in SealTalk-android*
 
-Since the source code of the app is in the SealTalk directory, we now take a look inside to figure out its detailed structure from the package perspective, which is shown in Table 2.
+Since the source code of the app is in the SealTalk directory, we now take a look inside to figure out its detailed structure from the package perspective[2], which is shown in Table 2.
 
 | Package Name | Function                                                     |
 | ------------ | ------------------------------------------------------------ |
@@ -216,6 +223,12 @@ The task layer is the repository layer. It shields the data source and internal 
 
 *Figure 5: MVVM Implementation in SealTalk*
 
+## Functional View
+
+### External interface
+
+The external interfaces provided by SealTalk mainly concern how to help users to build their own instant messenger or simply do some customization based on the demo app. They also include complete sample codes. For instance, the functionality concerns receiving and sending message, retrieving information, creating or removing the chat rooms and groups, as well as changing the user interface. Next to that it also provides utilities as net services, qrcode processing, file management and so on. There are too many interfaces to completely list them in this report, while they're quite complete for building a message application. On the other hand, others just need to revise few codes in some functions without changing the internal structure, if they want to add new modules or integrate it into their own application.
+
 ## Usability Perspective
 
 Usability is a term that too abstract to be studied directly. Here we further divided it into three parts by following FCM model.
@@ -253,6 +266,29 @@ For User, the UI is simple to discover. SealTalk have reused all the icon from Q
 
 *Figure 10: SealTalk friend Activity*
 
+## Tactics
+
+Tactics are a collection of primitive design techniques that an architect can use to achieve a quality attribute response.
+
+### Push & Pull
+
+As we have mentioned in the introduction part, SealTalk have integrated user social functions, the core function of which is Feeding[3]. After a user publishes some content, the backend server displays the acquired data to the user's fans in a certain way. The common tactics are **push and pull**. 
+
+In **push**, the process of a user publishing content is as follows: (1) A user with id #1 published a message; (2) The backend wrote the content to the database; (3) Search in the *followers* table where user_id=1; (4) Write the content to the *received_content* table where the receive_id equals to the follower's id in step3; (5) When the followers check their feeds, the backend will query in the *received_content* table. Obviously, the **push** adopts the strategy of **space for time**.
+
+In **pull**,  the process of a user publishing content is as follows: (1)A user with id #1 published a message; (2) The backend wrote the content to the *send_content* table;  (3) When another user with id #2 check his/her feeds, make a query in the *followings* table and find that it should acquire the content published by #1; (4) The backend again make query in the *send_content* table where author_id=1 to display the message content. t can be seen from the above that the **pull** adopts the strategy of **time for space**, since users can publish their contents with high efficiency, however when displaying the feeds, it costs lots of time in the aggregation operations.
+
+The table 3 shows their advantages and side-effects.
+
+|  | Push     | pull |
+| -------------- | ------------ | -------------|
+| publish contents    | push to all the followers | no pushing |
+| display feeds         | done by a single SQL | needs lots of aggregation operations |
+| modify contents | higher cost  | lower cost |
+*Table 3: advantages and side-effects*
+
+Since the SealTalk is served for companies or enterprises, not for the public, which means it is not likely to posses a large number of users like Weibo ,it adopts the **push** tactics to improve is **performance** quality attribute.
+
 ## Evolutionary Perspective
 
 The evolutionary perspective deals with concerns related to evolution during the lifetime of a system. SealTalk has changed a lot since its initial release, so it is necessary to learn the evolution perspective of it. In the following of this section, the evolution of SealTalk will be shown in detail.
@@ -267,7 +303,7 @@ Since SealTalk is an open source instant messaging App based on the Rongyun Inst
 
 ## Technical Debt
 
-Technical debt is a concept in programming that reflects the extra development work that arises when code that is easy to implement in the short run is used instead of applying the best overall solution. 
+Technical debt is a concept in programming that reflects the extra development work that arises when code that is easy to implement in the short run is used instead of applying the best overall solution[5]. 
 
 > According to Ward Cunningham, who coined the "technical debt", it is used to describe the obligation that a software organization incurs when it chooses a design or construction approach that's expedient in the short term but that increases complexity and is more costly in the long term.
 
@@ -322,7 +358,7 @@ On the other hand, another way of identifying code debt is  searching for "TODO"
 
 ### Testing Debt
 
-Testing code coverage of SealTalk is had to do, because it's an Android-studio project and the developers do  not write some unit test. Even running the demo, the service address where you deploy SealTalk need to be provided to replace the defalut value in source code, as well as RongCloud AppKey. 
+Testing code coverage of SealTalk is had to do, because it's an Android-studio project and the developers do  not write some unit test. Even running the demo, the service address where you deploy SealTalk need to be provided to replace the default value in source code, as well as RongCloud AppKey. 
 
 At present, we intend to abandon the assessment of this part of technical debt
 
@@ -332,7 +368,17 @@ Developers need to write documentation of their source code, which may be of hel
 
 SealTalk 2.0+ gives the detailed architecture diagram to help the developers and users understand the structure easily, while they just gave a simple UML diagram in previous version. 
 
-Besides, on the Github page of SealTalk, there is a link to [SealTalk Server](https://github.com/sealtalk/sealtalk-server). This project is a back-end service for SealTalk series of applications, providing user, friend, group, blacklist related interfaces and data management services. In the project home directory, Readme file gives detailed installation and usage guide. Until now, few issues have been opened about this aspect, and quite part of them are just related to Android X compatibility problems([#20](https://github.com/sealtalk/sealtalk-android/issues/20), [#35](https://github.com/sealtalk/sealtalk-android/issues/35)), which have been already solved or due to using the old version SealTalk.
+Besides, on the GitHub page of SealTalk, there is a link to [SealTalk Server](https://github.com/sealtalk/sealtalk-server). This project is a back-end service for SealTalk series of applications, providing user, friend, group, blacklist related interfaces and data management services. In the project home directory, Readme file gives detailed installation and usage guide. Until now, few issues have been opened about this aspect, and quite part of them are just related to Android X compatibility problems([#20](https://github.com/sealtalk/sealtalk-android/issues/20), [#35](https://github.com/sealtalk/sealtalk-android/issues/35))[4], which have been already solved or due to using the old version SealTalk.
 
 From these perspectives, SealTalk seems to be out of debt in the documentation section. They provide a complete set of documentation and flowcharts for the user to understand. This includes how to deploy the front and back end, API list documentation, SDK integration instructions and so on.
 
+## Conclusion
+
+## References
+
+1. RongCloud.  https://www.rongcloud.cn/product/im, 2019.
+2. GitHub.com. sealtalk-android.  https://github.com/sealtalk/sealtalk-android/tree/master/sealtalk/src/main/java/cn/rongcloud/im, 2019.
+3. Wikipedia.  https://en.wikipedia.org/wiki/Facebook_News_Feed, 2019.
+4. GitHub.com. https://github.com/sealtalk/sealtalk-android/issues, 2019.
+5. Technopedia. Technical debt. https://www.techopedia.com/definition/27913/technicaldebt,
+   2017.
