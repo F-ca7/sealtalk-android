@@ -226,9 +226,35 @@ The task layer is the repository layer. It shields the data source and internal 
 
 ## Functional View
 
+The functional view defines the architectural elements that deliver the SealTalk’s functionality. The view will shows the key functional elements and the external interfaces of SealTalk in the following part of this section.
+
 ### External interface
 
 The external interfaces provided by SealTalk mainly concern how to help users to build their own instant messenger or simply do some customization based on the demo app. They also include complete sample codes. For instance, the functionality concerns receiving and sending message, retrieving information, creating or removing the chat rooms and groups, as well as changing the user interface. Next to that it also provides utilities as net services, qrcode processing, file management and so on. There are too many interfaces to completely list them in this report, while they're quite complete for building a message application. On the other hand, others just need to revise few codes in some functions without changing the internal structure, if they want to add new modules or integrate it into their own application.
+
+### Functional capabilities
+
+Functional capabilities define what the system is required to do. The most important and unique functionalities will be described in this part. Since SealTalk is an instant messaging app, its functionalities mainly include four categories: registration and login, session, address book, personal information management. Each category will have a detailed introduction below.
+
+#### Registration and login
+
+Registering is a function that no user can avoid when they are using SealTalk for the first time. SealTalk's account needs to be bound with the mobile number. During the registration, users need to fill in a nickname, password and mobile number. After entering the mobile number, clicking the button on the right will make them receive a verification code sending by the system. Only the correct verification code can complete the registration. The registration process just needs to be carried out once. When using SealTalk for the second time, users can directly log in and enter their own account. The login only needs to fill in the user name and password.
+
+Of course, it's common for many users to forget their password. If you encounter such a thing, don't worry. Just use your mobile number can easily set a new password.
+
+#### Session
+
+Session is the most basic and important functionality of SealTalk. Session types include single session, group session, chat room, discussion group, etc. T here is a plus sign in the upper right corner of the session interface. Click the plus sign to use three functions: create chat, add friends and create group chat. Users should first add friends by searching email or mobile number in the add friends interface. After adding friends, users can create single or group chat with friends freely. Session not only supports text, but also voice, picture, image, location, red packet, business card and other message types. At the same time, it can also display the sending status of messages in the session interface. 
+
+Chat room is a very special way of session. Unlike group sessions, chat room sessions can be created among strangers. Users can find the chat rooms through the "discovery" function and join one that is interesting to them. There is no maximum number of members in the chat room session and the information in the chat room will not be received after exiting the interface. It is suitable for live chat rooms, roadshows and other temporary scenes.
+
+#### Address book
+
+The address book in SealTalk can be used not only to find friends, but also to search for group and public numbers. In addition to the above functions, if a stranger wants to add you as a friend, this information will also be displayed in the address book. The history of adding friends will also be kept in the address book for a period of time, and users can view it at any time.
+
+#### Personal information management
+
+In the personal information management interface,users can choose a favorite picture as their avatar and give themselves a nickname. This function helps to distinguish each user and make them more personalized. It also supports some account management transactions, such as changing account password, logging out, clearing chat records, etc. If users meet any problems when using the app, they can contact customer service in "feedback" and customer service will respond to users' comments as soon as possible. At the same time, some information about SealTalk can also be viewed through this interface. SealTalk provides a product introduction for new users to familiarize them with the basic functions of the software and explain some complex functions that are not easy to understand. The version of the product and the SDK version used are also displayed. If users want to know more information, they can click "about SealTalk" to link to the official website.
 
 ## Usability Perspective
 
