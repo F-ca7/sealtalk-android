@@ -19,6 +19,7 @@ development practices, thereby reducing the time from development to online appl
 - [Functional View](#Functional View)
 - [Usability Perspective](#Usability-Perspective) 
 - [Tactics](#Tactics) 
+- [Deployment View](#Deployment View)
 - [Evolutionary Perspective](#Evolutionary-Perspective)
 - [Technical Debt](#Technical-Debt)
 - [Conclusion](#Conclusion)
@@ -244,11 +245,11 @@ For user, the chat view is designed as simple as possible, no redundant buttons 
 
 ### Training
 
-Sealtalk's UI is very similar to its competitor, like WeChat or QQ, which may due to the acquirer's concern to reduce the cost to build, especially the cost to redesign the UI. It is likely that user can switch to Sealtalk from WeChat without training cost. It is easy to found that the design(see figures 8 9 10) is largely influenced by WeChat. SealTalk have packed all the code and sored by their utility, and leave Chinese notes for developers to quickly get started with Rongcloud's cloud service.(see figure 7)
+SealTalk's UI is very similar to its competitor, like WeChat or QQ, which may due to the acquirer's concern to reduce the cost to build, especially the cost to redesign the UI. It is likely that user can switch to SealTalk from WeChat without training cost. It is easy to found that the design(see figures 8 9 10) is largely influenced by WeChat. SealTalk have packed all the code and sored by their utility, and leave Chinese notes for developers to quickly get started with Rongcloud's cloud service.(see figure 7)
 
 <img src="https://s2.ax1x.com/2019/11/02/Kqo4Rf.jpg" style="zoom:67%;" />
 
-*Figure 7: Sealtalk's note for developers*
+*Figure 7: SealTalk's note for developers*
 
 ### Understandability
 
@@ -289,6 +290,22 @@ The table 3 shows their advantages and side-effects.
 
 Since the SealTalk is served for companies or enterprises, not for the public, which means it is not likely to posses a large number of users like Weibo ,it adopts the **push** tactics to improve is **performance** quality attribute.
 
+## Deployment View
+
+SealTalk-Android runs on Android platform, so its developing and deploying relies on anything that a typical android application does.
+
+SealTalk-Android is build via Android studio, an IDE for android application developed by google. Android studio uses gradle to manage build settings for applications. For SealTalk-android, the version of gradle is 3.3.2 by default, and it could be swapped by Android studio automatically.
+
+SealTalk-Android, as its name, is designed to running on Android platform. Android platform has three layers on the bottom of application: Linux kernel- Dalvik Virtual Machine and Application FrameWork. Google packed them and marked as android SDK version. For SealTalk android, its target SDK version is 28, with minimum SDK version 19, which means it should be running normally on Android platform version Through Android 4.4 to 9.0 .  
+
+Besides, it requires internet connection, and 23.5mb of memory required for the APK, while typically a real time communication software requires more spaces for the messages.
+
+Last but not least, the source code itself is not completed. RongCloud's release SealTalk-android for their cloud services, the application cannot be started without a copy of permission license for RongCloud's IM realtime talk SDK.  The project is using RongCloud SDK2.9.19 for its communication part, so it is required to purchase a license from RongCloud, and hard code the ID before building the application.  
+
+<img src="https://s2.ax1x.com/2019/11/17/MDb00O.jpg" style="zoom: 80%;" />
+
+*Figure 11: Deployment View*
+
 ## Evolutionary Perspective
 
 The evolutionary perspective deals with concerns related to evolution during the lifetime of a system. SealTalk has changed a lot since its initial release, so it is necessary to learn the evolution perspective of it. In the following of this section, the evolution of SealTalk will be shown in detail.
@@ -299,7 +316,7 @@ Since SealTalk is an open source instant messaging App based on the Rongyun Inst
 
 ![](https://s2.ax1x.com/2019/10/30/K4KVJO.png)
 
-*Figure 11: The Evolution of SealTalk*
+*Figure 12: The Evolution of SealTalk*
 
 ## Technical Debt
 
@@ -368,7 +385,7 @@ Developers need to write documentation of their source code, which may be of hel
 
 SealTalk 2.0+ gives the detailed architecture diagram to help the developers and users understand the structure easily, while they just gave a simple UML diagram in previous version. 
 
-Besides, on the GitHub page of SealTalk, there is a link to [SealTalk Server](https://github.com/sealtalk/sealtalk-server). This project is a back-end service for SealTalk series of applications, providing user, friend, group, blacklist related interfaces and data management services. In the project home directory, Readme file gives detailed installation and usage guide. Until now, few issues have been opened about this aspect, and quite part of them are just related to Android X compatibility problems([#20](https://github.com/sealtalk/sealtalk-android/issues/20), [#35](https://github.com/sealtalk/sealtalk-android/issues/35))[4], which have been already solved or due to using the old version SealTalk.
+Besides, on the GitHub page of SealTalk, there is a link to [SealTalk Server](https://github.com/SealTalk/SealTalk-server). This project is a back-end service for SealTalk series of applications, providing user, friend, group, blacklist related interfaces and data management services. In the project home directory, Readme file gives detailed installation and usage guide. Until now, few issues have been opened about this aspect, and quite part of them are just related to Android X compatibility problems([#20](https://github.com/SealTalk/SealTalk-android/issues/20), [#35](https://github.com/SealTalk/SealTalk-android/issues/35))[4], which have been already solved or due to using the old version SealTalk.
 
 From these perspectives, SealTalk seems to be out of debt in the documentation section. They provide a complete set of documentation and flowcharts for the user to understand. This includes how to deploy the front and back end, API list documentation, SDK integration instructions and so on.
 
@@ -377,8 +394,8 @@ From these perspectives, SealTalk seems to be out of debt in the documentation s
 ## References
 
 1. RongCloud.  https://www.rongcloud.cn/product/im, 2019.
-2. GitHub.com. sealtalk-android.  https://github.com/sealtalk/sealtalk-android/tree/master/sealtalk/src/main/java/cn/rongcloud/im, 2019.
+2. GitHub.com. SealTalk-android.  https://github.com/SealTalk/SealTalk-android/tree/master/SealTalk/src/main/java/cn/rongcloud/im, 2019.
 3. Wikipedia.  https://en.wikipedia.org/wiki/Facebook_News_Feed, 2019.
-4. GitHub.com. https://github.com/sealtalk/sealtalk-android/issues, 2019.
+4. GitHub.com. https://github.com/SealTalk/SealTalk-android/issues, 2019.
 5. Technopedia. Technical debt. https://www.techopedia.com/definition/27913/technicaldebt,
    2017.
