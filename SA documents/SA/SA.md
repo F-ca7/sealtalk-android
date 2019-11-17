@@ -16,10 +16,10 @@ development practices, thereby reducing the time from development to online appl
 - [Stakeholder Analysis](#Stakeholder)
 - [Context View](#Context-view)
 - [Development View](#Development-View) 
-- [Functional View](#Functional View)
+- [Functional View](#Functional-View)
 - [Usability Perspective](#Usability-Perspective) 
 - [Tactics](#Tactics) 
-- [Deployment View](#Deployment View)
+- [Deployment View](#Deployment-View)
 - [Evolutionary Perspective](#Evolutionary-Perspective)
 - [Technical Debt](#Technical-Debt)
 - [Conclusion](#Conclusion)
@@ -416,6 +416,22 @@ Besides, on the GitHub page of SealTalk, there is a link to [SealTalk Server](ht
 From these perspectives, SealTalk seems to be out of debt in the documentation section. They provide a complete set of documentation and flowcharts for the user to understand. This includes how to deploy the front and back end, API list documentation, SDK integration instructions and so on.
 
 ## Conclusion
+
+SealTalk is an open source instant messaging App based on the RongCloud Instant Messaging SDK (IMKIt). In this chapter, we analyzed the project from different views and perspectives. Each of these gave more insight into the architecture of SealTalk.
+
+First off, in the stakeholder analysis,many different actors with distinct roles, power and interest have been analyzed. The predominant stakeholder of SealTalk is RongCloud Inc., because it's the company which it belongs to,which has the most power and interest in this project. Besides, developers of this project, two GitHub contributors -- jenkinsrc and rc-huangxiujun, have the highest power and interest eithier. The two less powerful stakeholders are the users and the competitors, while competitors have the highest interest, like QQ, Wechat.
+
+After that, in the context view, the system scope of SealTalk is given and the context model of SealTalk is illustrated. In the development view,the architecture that supports the software development process is given and we detailed analysis of the module structure. The functional view defines the architectural elements that deliver the SealTalk’s functionality.
+
+Then,we explain the usability perspective from three aspects: operability, training, and understandability. Strategically, push-pull strategies are used to improve performance quality attributes.
+
+Furthermore, in the deployment view,SealTalk-Android runs on Android platform, so its developing and deploying relies on anything that a typical android application does. Besides, it requires internet connection, and 23.5mb of memory required for the APK, while typically a real time communication software requires more spaces for the messages.
+
+Afterwards,SealTalk has changed a lot since its initial release. From 2016 to now, the version of SDK has also been updated dozens of times. The latest release updates the SDK to 2.10.0.
+
+Finally, in the technical debt part,we discussed the technical debt that SealTalk is facing.
+
+SealTalk is a powerful messaging App nowadays, and definitely has potential to be used widely in the future.
 
 ## References
 
