@@ -413,6 +413,10 @@ SealTalk 2.0+ gives the detailed architecture diagram to help the developers and
 
 Besides, on the GitHub page of SealTalk, there is a link to [SealTalk Server](https://github.com/SealTalk/SealTalk-server). This project is a back-end service for SealTalk series of applications, providing user, friend, group, blacklist related interfaces and data management services. In the project home directory, Readme file gives detailed installation and usage guide. Until now, few issues have been opened about this aspect, and quite part of them are just related to Android X compatibility problems([#20](https://github.com/SealTalk/SealTalk-android/issues/20), [#35](https://github.com/SealTalk/SealTalk-android/issues/35))[4], which have been already solved or due to using the old version SealTalk.
 
+![](https://s2.ax1x.com/2019/11/21/MIYJsg.png)
+
+*Figure 13: API documentation*
+
 From these perspectives, SealTalk seems to be out of debt in the documentation section. They provide a complete set of documentation and flowcharts for the user to understand. This includes how to deploy the front and back end, API list documentation, SDK integration instructions and so on.
 
 ## Conclusion
