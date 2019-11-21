@@ -281,7 +281,7 @@ SealTalk's UI is very similar to its competitor, like WeChat or QQ, which may du
 
 For User, the UI is simple to discover. SealTalk have reused all the icon from QQ, thus it is accomplishing understandability with the minimum cost.(see figures 8 9 10)
 
-<img src="https://s2.ax1x.com/2019/11/02/Kqo5z8.jpg" style="zoom: 50%;" />
+<img src=" https://s2.ax1x.com/2019/11/02/Kqo5z8.jpg " style="zoom: 50%;" />
 
 *Figure 8: SealTalk add new friend Activity*
 
@@ -358,7 +358,7 @@ Since the SealTalk _1.3.14, the audio and video engine referenced by the CallLib
 
 > Because DataBinding was difficult to debug, and had to be written in XML, the decision was made to deactivate DataBinding. 
 
-These are the two biggest progress in the project, each version is incompatible with the old version, which makes the old version directly obsolete and not maintained. As shown in the Github, all issues about the old versions are closed and the only suggestion is to try the latest version, which may make some developers annoyed. Even SealTalk 2.0 hasn't completely solve the Android X compatibility problem. 
+These are the two biggest progress in the project, each version is incompatible with the old version, which makes the old version directly obsolete and not maintained. As shown in the GitHub, all issues about the old versions are closed and the only suggestion is to try the latest version, which may make some developers annoyed. Even SealTalk 2.0 hasn't completely solve the Android X compatibility problem. 
 
 After looking in to the project structure in the previous version and the latest one. It's obvious that the file organization structure is becoming terser, and large part of codes split into small ones.  For instance, `Friend.java` and `FriendDao.java`(which are relative to manipulating database), are divided into `FriendBlackInfo.java`, `FriendDescription.java`, `FriendInfo.java`, `FriendShipInfo.java`, and `FriendStatus.java` in 2.1. Therefore, the overall code becomes easier to maintain while more functions are implemented. Other progresses are achieved like sources are merged into one package, redundant libs are removed and so on. It is clear that they are paying down their debts.
 
