@@ -6,8 +6,7 @@
 
 ## Abstract
 
-SealTalk is an open source instant messaging App based on the RongCloud Instant
-Messaging SDK (IMKIt). It meets the social communication needs, providing single group chat, super group and other chat modes, support picture, voice and small video, real-time message push, highly customized interface, high-definition audio and video call, effectively improve user stickiness and activeness. It aims to provide developers with IM development needs with reference
+SealTalk is an open source instant messaging App based on the RongCloud Instant Messaging SDK (IMKIt). It meets the social communication needs, providing single group chat, super group and other chat modes, support picture, voice and small video, real-time message push, highly customized interface, high-definition audio and video call, effectively improve user stickiness and activeness. It aims to provide developers with IM development needs with reference
 development practices, thereby reducing the time from development to online application, and devoting more energy to the application's own business implementation.
 
 ## Table of contents
@@ -262,7 +261,7 @@ Usability is a term that too abstract to be studied directly. Here we further di
 
 ### Operability
 
-For user, the chat view is designed as simple as possible, no redundant buttons or panels for end users. In main Activity(see figure 6), Group session and Friend session is placed on the center of the screen, with some helpful items on the top. For developer, the code is well-organized with sufficient folder, helping developer to review or customize the compartment he wants easily.
+For user, the chat view is designed as simple as possible, no redundant buttons or panels for end users. In main Activity(see figure 6), Group session and Friend session is placed on the center of the screen, with some helpful items on the top. For developer, the code is well-organized with sufficient folder, helping developers to review or customize the compartment he wants easily, which enables **user's initiative** to achieve usability[6].
 
 
 ![](https://s2.ax1x.com/2019/11/02/Kqofit.jpg)
@@ -279,7 +278,7 @@ SealTalk's UI is very similar to its competitor, like WeChat or QQ, which may du
 
 ### Understandability
 
-For User, the UI is simple to discover. SealTalk have reused all the icon from QQ, thus it is accomplishing understandability with the minimum cost.(see figures 8 9 10)
+For User, the UI is simple to discover. SealTalk have reused all the icon from QQ, thus it is accomplishing understandability with the minimum cost[7].(see figures 8 9 10)
 
 <img src=" https://s2.ax1x.com/2019/11/02/Kqo5z8.jpg " style="zoom: 50%;" />
 
@@ -293,15 +292,19 @@ For User, the UI is simple to discover. SealTalk have reused all the icon from Q
 
 *Figure 10: SealTalk friend Activity*
 
-## Tactics
+## Performance Tactics
 
-Tactics are a collection of primitive design techniques that an architect can use to achieve a quality attribute response.
+Tactics are a collection of primitive design techniques that an architect can use to achieve a quality attribute response. The goals for performance tactics are   **resource consumption** and **blocked time**.
+
+### Message Queue
+
+There are three applications of message queue comparison core: decoupling and asynchronism. A common consumption mode in message queuing is push-pull mode.
 
 ### Push & Pull
 
-As we have mentioned in the introduction part, SealTalk have integrated user social functions, the core function of which is Feeding[3]. After a user publishes some content, the backend server displays the acquired data to the user's fans in a certain way. The common tactics are **push and pull**. 
+As we have mentioned in the introduction part, SealTalk have integrated user social functions, the core function of which is Feeding[3]. After a user publishes some content, the backend server displays the acquired data to the user's fans in a certain way. The common tactics are **push and pull**, which are two mechanisms in **message queue**. **Push** is that the **broker** takes the initiative to push messages to the **consumer**, and they only need to keep a long connection between them. **Pull** is that the consumer takes the initiative to pull messages from the broker.
 
-In **push**, the process of a user publishing content is as follows: (1) A user with id #1 published a message; (2) The backend wrote the content to the database; (3) Search in the *followers* table where user_id=1; (4) Write the content to the *received_content* table where the receive_id equals to the follower's id in step3; (5) When the followers check their feeds, the backend will query in the *received_content* table. Obviously, the **push** adopts the strategy of **space for time**.
+In **push**, the process of a user publishing content is as follows: (1) A user with id #1 published a message; (2) The backend wrote the content to the database; (3) Search in the *followers* table where user_id=1; (4) Write the content to the *received_content* table where the receive_id equals to the follower's id in step3; (5) When the followers check their feeds, the backend will query in the *received_content* table. Obviously, the **push** adopts the strategy of **space for time**. It **maintains multiple copies**[6] to achieve **performance**.
 
 In **pull**,  the process of a user publishing content is as follows: (1)A user with id #1 published a message; (2) The backend wrote the content to the *send_content* table;  (3) When another user with id #2 check his/her feeds, make a query in the *followings* table and find that it should acquire the content published by #1; (4) The backend again make query in the *send_content* table where author_id=1 to display the message content. t can be seen from the above that the **pull** adopts the strategy of **time for space**, since users can publish their contents with high efficiency, however when displaying the feeds, it costs lots of time in the aggregation operations.
 
@@ -443,5 +446,6 @@ SealTalk is a powerful messaging App nowadays, and definitely has potential to b
 2. GitHub.com. SealTalk-android.  https://github.com/SealTalk/SealTalk-android/tree/master/SealTalk/src/main/java/cn/rongcloud/im, 2019.
 3. Wikipedia.  https://en.wikipedia.org/wiki/Facebook_News_Feed, 2019.
 4. GitHub.com. https://github.com/SealTalk/SealTalk-android/issues, 2019.
-5. Technopedia. Technical debt. https://www.techopedia.com/definition/27913/technicaldebt,
-   2017.
+5. Technopedia. Technical debt. https://www.techopedia.com/definition/27913/technicaldebt, 2017.
+6. Len Bass, Paul Clements, Rick Kazman. Software Architecture in Practice, Second Edition. 2003.
+7. Jenny Preece, Yvonne Rogers. Interaction Design, Beyond Human-Computer Interaction, Fourth Edition. 2018.
