@@ -263,6 +263,8 @@ Usability is a term that too abstract to be studied directly. Here we further di
 
 For user, the chat view is designed as simple as possible, no redundant buttons or panels for end users. In main Activity(see figure 6), Group session and Friend session is placed on the center of the screen, with some helpful items on the top. For developer, the code is well-organized with sufficient folder, helping developers to review or customize the compartment he wants easily, which enables **user's initiative** to achieve usability[6].
 
+SealTalk arranged its UI and backend as **MVVM**(described above), which is a tactic to achieve **Separate User Interface**[6].
+
 
 ![](https://s2.ax1x.com/2019/11/02/Kqofit.jpg)
 
